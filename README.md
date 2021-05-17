@@ -10,9 +10,13 @@
 ## How to start developing
 
 1. Install Docker Engine and Docker Compose.
-2. Add an alias in your terminal enviroment: `alias sail='bash vendor/bin/sail'`
-3. Start all the required containers in detached mode: `sail up -d`
-4. Now go to `http://localhost` in your browser.
+2. Install PHP, composer and Laravel.
+3. Run this command: `composer require laravel/sail --dev`
+4. Add an alias in your terminal enviroment: `alias sail='bash vendor/bin/sail'`
+5. Start all the required containers in detached mode: `sail up -d`
+6. Now go to `http://localhost` in your browser.
+   
+> Note: This project doesn't require sail to work, you can just run it as a normal Laravel project.
 
 [Instructions for MacOS](https://laravel.com/docs/8.x/installation#getting-started-on-macos)
 
