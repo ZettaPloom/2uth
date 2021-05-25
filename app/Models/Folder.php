@@ -6,17 +6,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Code extends Model
+class Folder extends Model
 {
     use HasFactory;
 
     /**
-     * Get the folder that owns the Code
+     * Get the user that owns the Folder
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function folder(): BelongsTo
+    public function user(): BelongsTo
     {
-        return $this->belongsTo(Folder::class);
+        return $this->belongsTo(User::class);
     }
 }

@@ -10,7 +10,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -62,12 +62,12 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
     /**
-     * Get all of the OTP codes for the User
+     * Get all of the codes for the User
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
      */
-    public function codes(): HasMany
+    public function codes(): HasManyThrough
     {
-        return $this->hasMany(Code::class);
+        return $this->hasManyThrough(Code::class, Folder::class);
     }
 }

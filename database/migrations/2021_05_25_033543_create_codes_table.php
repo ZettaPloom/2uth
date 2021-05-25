@@ -15,8 +15,8 @@ class CreateCodesTable extends Migration
     {
         Schema::create('codes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id'); // The user that owns the OTP code
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreignId('folder_id'); // The folder where resides the OTP code
+            $table->foreign('folder_id')->references('id')->on('folders');
             $table->string('type',4); // The OTP type (TOTP or HOTP)
             $table->string('label',20); // The tag (aplication) of the OTP code (e.g. Google)
             $table->string('user',100); // The user which is mean to be used with the OTP code (e.g. user@domain.com)
