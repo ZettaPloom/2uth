@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Code;
+use App\Models\Folder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -24,9 +25,9 @@ class CodeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Folder $folder)
     {
-        return view('codes.create', ['user_id' => Auth::user()->id]);
+        return view('codes.create', ['user_id' => Auth::user()->id, 'folder_id' => $folder->id]);
     }
 
     /**

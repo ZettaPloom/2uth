@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Folder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
-use Inertia\Inertia;
 
 class FolderController extends Controller
 {
@@ -50,7 +48,7 @@ class FolderController extends Controller
      */
     public function show(Folder $folder)
     {
-        return view('folders.show', ['codes' => $folder->codes]);
+        return view('folders.show', ['codes' => $folder->codes, 'folder' => $folder]);
     }
 
     /**
