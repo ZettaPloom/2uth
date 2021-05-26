@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Code extends Model
 {
     use HasFactory;
+    protected $guarded = [];
 
     /**
      * Get the folder that owns the Code

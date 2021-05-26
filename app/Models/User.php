@@ -11,6 +11,7 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -69,5 +70,15 @@ class User extends Authenticatable implements MustVerifyEmail
     public function codes(): HasManyThrough
     {
         return $this->hasManyThrough(Code::class, Folder::class);
+    }
+
+    /**
+     * Get all of the folders for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function folders(): HasMany
+    {
+        return $this->hasMany(Folder::class);
     }
 }

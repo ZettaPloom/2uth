@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Code;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CodeController extends Controller
 {
@@ -14,7 +15,8 @@ class CodeController extends Controller
      */
     public function index()
     {
-        //
+        $codes = Auth::user()->codes;
+        return $codes;
     }
 
     /**
@@ -24,7 +26,7 @@ class CodeController extends Controller
      */
     public function create()
     {
-        //
+        return view('codes.create', ['user_id' => Auth::user()->id]);
     }
 
     /**
@@ -46,7 +48,7 @@ class CodeController extends Controller
      */
     public function show(Code $code)
     {
-        //
+        return "Hry";
     }
 
     /**
