@@ -25,9 +25,9 @@ class CodeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Folder $folder)
+    public function create(Request $request)
     {
-        return view('codes.create', ['user_id' => Auth::user()->id, 'folder_id' => $folder->id]);
+        return view('codes.create', ['folder_id' => $request->folder_id]);
     }
 
     /**
@@ -38,7 +38,8 @@ class CodeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Code::create($request->all());
+        return redirect()->route('folders.index');
     }
 
     /**
