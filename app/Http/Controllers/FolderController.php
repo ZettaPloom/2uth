@@ -15,7 +15,11 @@ class FolderController extends Controller
      */
     public function index()
     {
-        return view('folders.index', ['folders' => Auth::user()->folders]);
+        $folders = Auth::user()->folders;
+        foreach ($folders as $folder) {
+            $folder->codes;
+        }
+        return view('folders.index', ['folders' => $folders]);
     }
 
     /**
@@ -37,7 +41,7 @@ class FolderController extends Controller
     public function store(Request $request)
     {
         Folder::create($request->all());
-        return redirect()->route('folders.index');
+        return redirect()->route('dashboard');
     }
 
     /**
@@ -48,7 +52,7 @@ class FolderController extends Controller
      */
     public function show(Folder $folder)
     {
-        return view('folders.show', ['codes' => $folder->codes, 'folder' => $folder]);
+        //
     }
 
     /**
@@ -59,7 +63,7 @@ class FolderController extends Controller
      */
     public function edit(Folder $folder)
     {
-        //
+        return view('folders.edit', ['folder' => $folder]);
     }
 
     /**
@@ -71,7 +75,8 @@ class FolderController extends Controller
      */
     public function update(Request $request, Folder $folder)
     {
-        //
+        $folder->update($request->all());
+        return redirect()->route('dashboard');
     }
 
     /**
@@ -82,6 +87,7 @@ class FolderController extends Controller
      */
     public function destroy(Folder $folder)
     {
-        //
+        $folder->delete();
+        return redirect()->route('folders.index');
     }
 }

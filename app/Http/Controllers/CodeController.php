@@ -84,6 +84,7 @@ class CodeController extends Controller
      */
     public function destroy(Code $code)
     {
-        //
+        $code->delete();
+        return redirect()->route('folders.index');
     }
 }

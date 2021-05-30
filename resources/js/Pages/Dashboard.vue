@@ -12,9 +12,6 @@
           <inertia-link :href="route('folders.index')">
             <jet-secondary-button> Folders </jet-secondary-button>
           </inertia-link>
-          <inertia-link :href="route('folders.create')">
-            <jet-secondary-button> New Folder </jet-secondary-button>
-          </inertia-link>
         </div>
       </div>
     </div>
