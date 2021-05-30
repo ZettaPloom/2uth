@@ -1,8 +1,8 @@
-    <div class="container mx-auto flex flex-col w-1/2 otpcode" id="{{ $folder_id }}">
+    <div class="container mx-auto flex flex-col max-w-max otpcode" id="{{ $folder_id }}">
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                 <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                    <table class="min-w-full divide-y divide-gray-200">
+                    <table class="max-w-full min-w-full divide-y divide-gray-200">
                         <thead class="bg-gray-50">
                             <tr>
                                 <th scope="col"
@@ -11,7 +11,19 @@
                                 </th>
                                 <th scope="col"
                                     class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    OTP
+                                    Type
+                                </th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Algorithm
+                                </th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Digits
+                                </th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Secret
                                 </th>
                             </tr>
                         </thead>
@@ -44,8 +56,23 @@
                                             </div>
                                         </div>
                                     </td>
+                                    <td class="px-6 py-4 whitespace-nowrap uppercase">
+                                        <div class="text-sm text-gray-900">{{ $code->type }} &#8594
+                                            @if ($code->type == 'totp')
+                                                Period: {{ $code->period }}
+                                            @elseif ($code->type == 'hotp')
+                                                Counter: {{ $code->counter }}
+                                            @endif
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap uppercase">
+                                        <div class="text-sm text-gray-900">{{ $code->algorithm }}</div>
+                                    </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-sm text-gray-900">OTP</div>
+                                        <div class="text-sm text-gray-900">{{ $code->digits }}</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900">{{ $code->secret }}</div>
                                     </td>
                                 </tr>
                             @endforeach
