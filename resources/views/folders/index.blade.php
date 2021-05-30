@@ -11,7 +11,7 @@
                 <nav class="mt-10 px-0 grid ">
                     @foreach ($folders as $folder)
                         <div class="inline-flex">
-                            <a class="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-600 dark:text-gray-400 rounded-lg "
+                            <inertia-link class="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-600 dark:text-gray-400 rounded-lg "
                                 href="#{{ $folder->id }}" onclick="return show('{{ $folder->id }}')">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -22,7 +22,7 @@
                                 <span class="mx-4 text-lg font-normal">
                                     {{ $folder->name }}
                                 </span>
-                            </a>
+                            </inertia-link>
                             <div class="inline-flex absolute right-0">
                                 <a class="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-600 dark:text-gray-400 rounded-lg "
                                     href="{{ route('folders.edit', $folder->id) }}">
