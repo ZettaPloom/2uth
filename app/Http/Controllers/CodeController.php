@@ -61,7 +61,7 @@ class CodeController extends Controller
      */
     public function edit(Code $code)
     {
-        //
+        return view('codes.edit', ['code' => $code]);
     }
 
     /**
@@ -73,7 +73,8 @@ class CodeController extends Controller
      */
     public function update(Request $request, Code $code)
     {
-        //
+        $code->update($request->all());
+        return redirect()->route('dashboard');
     }
 
     /**
