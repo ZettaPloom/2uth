@@ -22,9 +22,11 @@
 
 <body class="font-sans antialiased">
     @inertia
-    <div class="py-12 hidden" id="bld">
-        @include('folders.index',['folders'=>Auth::user()->folders])
-    </div>
+    @auth
+        <div class="py-12 hidden" id="bld">
+            @include('folders.index',['folders'=>Auth::user()->folders])
+        </div>
+    @endauth
     <script>
         window.onload = function() {
             const content = document.getElementById('bld').innerHTML;

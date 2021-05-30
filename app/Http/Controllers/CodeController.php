@@ -39,7 +39,7 @@ class CodeController extends Controller
     public function store(Request $request)
     {
         Code::create($request->all());
-        return redirect()->route('folders.index');
+        return redirect()->route('dashboard');
     }
 
     /**
@@ -50,7 +50,7 @@ class CodeController extends Controller
      */
     public function show(Code $code)
     {
-        return "Hry";
+        //
     }
 
     /**
@@ -85,6 +85,6 @@ class CodeController extends Controller
     public function destroy(Code $code)
     {
         $code->delete();
-        return redirect()->route('folders.index');
+        return redirect()->route('dashboard');
     }
 }
