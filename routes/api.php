@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\CodeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,4 +18,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+// Route::middleware('auth:sanctum')->get('/codes', function () {
+//     return Auth::user()->codes;
+// });
+
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::get('/codes', [CodeController::class, 'index']);
+});
+
+Route::get('/test', function () {
+    return '200 OK';
 });

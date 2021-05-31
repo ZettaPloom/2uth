@@ -26,16 +26,16 @@
         <div class="py-12 hidden" id="bld">
             @include('folders.index',['folders'=>Auth::user()->folders])
         </div>
-    @endauth
-    <script>
-        window.onload = function() {
-            const content = document.getElementById('bld').innerHTML;
-            let inertia = document.getElementById('iner');
-            inertia.style.display = "block";
-            inertia.innerHTML = content;
-        }
+        <script>
+            window.onload = function() {
+                const content = document.getElementById('bld').innerHTML;
+                let inertia = document.getElementById('iner');
+                inertia.style.display = "block";
+                inertia.innerHTML = content;
+            }
 
-    </script>
+        </script>
+    @endauth
 </body>
 
 </html>
